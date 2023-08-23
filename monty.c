@@ -12,8 +12,9 @@ info_t info;
 int main(int ac, char *av[])
 {
 	unsigned int lnum = 0;
-	int size;
+	int ret;
 	stack_t *stack = NULL;
+	size_t size;
 
 	lnum++;
 	if (ac != 2)
@@ -21,19 +22,19 @@ int main(int ac, char *av[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	info.file = open(av[1], O_RDONLY);
+	info.file = fopen(av[1], "r");
 	if (!info.file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	size = fread(info.file, 1000, info.line);
-	while (size != 0)
+	ret = getline(&info.line, &size, info.file);
+	while (ret != 0)
 	{
 		if (get_opcode())
 			get_opcode()(&stack, lnum);
-		size = fread(info.file, 1000, info.line);
+		ret = getline(&info.line, $size, info.file);
 	}
-	close(info.file);
+	fclose(info.file);
 	return (0);
 }
