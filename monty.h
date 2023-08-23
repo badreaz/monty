@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -51,5 +52,7 @@ typedef struct info_s
 	int value;
 } info_t;
 extern info_t info;
+
+void (*get_opcode(void))(stack_t **stack, unsigned int line_number);
 
 #endif /*MAIN_H*/
