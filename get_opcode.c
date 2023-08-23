@@ -8,13 +8,13 @@
 void (*get_opcode(void))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t ops[] = {
-		{"push", push};
-		{"pall", pall};
-		{"pint", pint};
-		{"pop", pop};
-		{"swap", swap};
-		{"add", add};
-		{"nop", nop};
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}};
 	int i;
 	char *opcode;
