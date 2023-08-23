@@ -7,16 +7,13 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int element;
-
 	if (stack && *stack)
 	{
-		element = atoi(info.value);
-		if (!element)
+		if (!info.value)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
-		add_dnodeint(stack, element);
+		add_dnodeint(stack, info.value);
 	}
 }
