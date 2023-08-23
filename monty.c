@@ -27,7 +27,7 @@ int main(int ac, char *av[])
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	size = fread(info.file, &info.line, 1000);
+	size = fread(info.file, info.line, 1000);
 	while (size != 0)
 	{
 		if (get_opcode())
