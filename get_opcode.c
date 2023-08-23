@@ -21,7 +21,8 @@ void (*get_opcode(void))(stack_t **stack, unsigned int line_number)
 
 	opcode = strtok(info.line, " \n");
 	element= strtok(NULL, " \n");
-	info.value = atoi(element);
+	if (element)
+		info.value = atoi(element);
 	for (i = 0; ops[i].opcode; i++)
 	{
 		if (strcmp(opcode, ops[i].opcode) == 0)

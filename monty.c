@@ -12,7 +12,7 @@ info_t info;
 int main(int ac, char *av[])
 {
 	unsigned int lnum = 0;
-	int ret;
+	ssize_t ret;
 	stack_t *stack = NULL;
 	size_t size;
 
