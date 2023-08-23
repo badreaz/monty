@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * print_dlistint - prints all elements of a stack_t list.
+ * print_stack - prints all elements of a stack_t list.
  * @h: pointer to the head of double linked list.
  *
  * Return: number of nodes.
  */
-size_t print_dlistint(const stack_t *h)
+size_t print_stack(const stack_t *h)
 {
 	size_t i;
 
@@ -42,14 +42,14 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 }
 
 /**
- * free_dlistint - frees a stack_t list.
+ * free_stack - frees a stack_t list.
  * @head: pointer to the head of list.
  */
-void free_dlistint(stack_t *head)
+void free_stack(stack_t *head)
 {
 	if (head)
 	{
-		free_dlistint(head->next);
+		free_stack(head->next);
 		free(head);
 	}
 }
