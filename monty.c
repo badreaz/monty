@@ -33,7 +33,7 @@ int main(int ac, char *av[])
 	{
 		if (get_opcode())
 			get_opcode()(&stack, lnum);
-		ret = getline(&info.line, $size, info.file);
+		ret = getline(&info.line, &size, info.file);
 	}
 	fclose(info.file);
 	return (0);
