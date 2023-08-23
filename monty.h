@@ -54,5 +54,6 @@ typedef struct info_s
 extern info_t info;
 
 void (*get_opcode(void))(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number)
 
 #endif /*MAIN_H*/
