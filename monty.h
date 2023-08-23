@@ -47,7 +47,7 @@ typedef struct instruction_s
  */
 typedef struct info_s
 {
-	int file;
+	FILE *file;
 	char *line;
 	int value;
 } info_t;
