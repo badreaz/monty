@@ -18,13 +18,13 @@ int main(int ac, char *av[])
 	lnum++;
 	if (ac != 2)
 	{
-		fprintf(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	info.file = open(av[1], O_RDONLY);
 	if (!info.file)
 	{
-		fprintf(2, "Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	size = fread(info.file, &info.line, 1000);

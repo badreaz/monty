@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int line_number)
 		element = atoi(info.value);
 		if (!element)
 		{
-			fprintf(2, "L%d: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 		add_dnodeint(stack, element);
