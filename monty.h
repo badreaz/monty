@@ -35,4 +35,21 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct info_s - file, line, and value.
+ * @file; monty file.
+ * @line: line content.
+ * @value: instruction argument.
+ *
+ * Description: store info to be accessed
+ * over the entire program.
+ */
+typedef struct info_s
+{
+	int file;
+	char *line;
+	int value;
+} info_t;
+extern info_t info;
+
 #endif /*MAIN_H*/
