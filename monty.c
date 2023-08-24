@@ -14,7 +14,7 @@ int main(int ac, char *av[])
 	unsigned int lnum = 0;
 	ssize_t ret;
 	stack_t *stack = NULL;
-	size_t size;
+	size_t size = 1240;
 	char *opcode, *element;
 
 	lnum++;
@@ -30,12 +30,16 @@ int main(int ac, char *av[])
 		exit(EXIT_FAILURE);
 	}
 	ret = getline(&info.line, &size, info.file);
+	printf("%s\n", info.line);
 	while (ret != 0)
 	{
+		if (ret == EOF)
+			exit(EXIT_SUCCESS);
 		opcode = strtok(info.line, " \n");
 		element= strtok(NULL, " \n");
 		if (element)
 			info.value = atoi(element);
+		printf("%s\n", opcode);
 
 		if (get_opcode(opcode))
 			get_opcode(opcode)(&stack, lnum);
@@ -46,6 +50,7 @@ int main(int ac, char *av[])
 			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
+		lnum++;
 		ret = getline(&info.line, &size, info.file);
 	}
 	fclose(info.file);
