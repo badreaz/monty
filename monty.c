@@ -12,30 +12,31 @@ info_t info = {NULL, NULL, NULL};
  */
 int main(int ac, char *av[])
 {
-	unsigned int lnum = 0;
+	FILE *file;
+	unsigned int lnum = 1;
 	ssize_t ret;
 	stack_t *stack = NULL;
 	size_t size = 2000;
-	char *opcode;
+	char *opcode, *line;
 
-	lnum++;
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	info.file = fopen(av[1], "r");
-	if (!info.file)
+	file = fopen(av[1], "r");
+	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	ret = getline(&info.line, &size, info.file);
-	while (ret != 0)
+	line = malloc(sizeof(char) * size);
+	ret = getline(&line, &size, file);
+	info.file = file;
+	while (ret != EOF)
 	{
-		if (ret == EOF)
-			exit(EXIT_SUCCESS);
-		opcode = strtok(info.line, " \n\t");
+		info.line = line;
+		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
 		if (get_opcode(opcode))
 			get_opcode(opcode)(&stack, lnum);
@@ -44,12 +45,14 @@ int main(int ac, char *av[])
 			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, opcode);
 			fclose(info.file);
 			free_stack(stack);
+			free(line);
 			exit(EXIT_FAILURE);
 		}
 		lnum++;
-		ret = getline(&info.line, &size, info.file);
+		ret = getline(&line, &size, file);
 	}
 	fclose(info.file);
 	free_stack(stack);
+	free(line);
 	return (0);
 }
