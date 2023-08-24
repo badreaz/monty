@@ -77,5 +77,4 @@ void free_stack(stack_t *head);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 
-ssize_t getline(char **restrict lineptr, size_t *restrict n, FILE *restrict stream);
 #endif /*MAIN_H*/
