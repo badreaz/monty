@@ -25,6 +25,7 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		fclose(info.file);
 		free_stack(*stack);
+		free(info.line);
 		exit(EXIT_FAILURE);
 	}
 	add_dnodeint(stack, atoi(info.value));
