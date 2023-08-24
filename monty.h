@@ -41,6 +41,7 @@ typedef struct instruction_s
  * @file; monty file.
  * @line: line content.
  * @value: instruction argument.
+ * @queue: data format.
  *
  * Description: store info to be accessed
  * over the entire program.
@@ -50,6 +51,7 @@ typedef struct info_s
 	FILE *file;
 	char *line;
 	char *value;
+	int queue;
 } info_t;
 extern info_t info;
 
