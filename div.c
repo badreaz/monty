@@ -15,6 +15,14 @@ void div(stack_t **stack, unsigned int line_number)
 		free(info.line);
 		exit(EXIT_FAILURE);
 	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		fclose(info.file);
+		free_stack(*stack);
+		free(info.line);
+		exit(EXIT_FAILURE);
+	}
 	(*stack)->next->n /= (*stack)->n;
 	delete_dnodeint_at_index(stack, 0);
 }
