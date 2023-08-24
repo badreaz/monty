@@ -38,7 +38,7 @@ typedef struct instruction_s
 
 /**
  * struct info_s - file, line, and value.
- * @file; monty file.
+ * @file: monty file.
  * @line: line content.
  * @value: instruction argument.
  * @queue: data format.

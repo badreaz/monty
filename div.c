@@ -3,7 +3,7 @@
 /**
  * _div - divides the second elment by the first element of stack.
  * @stack: doubly linked list stack.
- * @line_nummber: file line number.
+ * @line_number: file line number.
  */
 void _div(stack_t **stack, unsigned int line_number)
 {

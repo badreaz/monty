@@ -8,7 +8,7 @@ info_t info = {NULL, NULL, NULL, 0};
  * @ac: argument count.
  * @av: argument vector.
  *
- * return: 0.
+ * Return: 0.
  */
 int main(int ac, char *av[])
 {
@@ -32,7 +32,7 @@ int main(int ac, char *av[])
 		info.line = line;
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
-		if (!opcode || ret == EOF || opcode[0] == '#') 
+		if (!opcode || ret == EOF || opcode[0] == '#')
 			continue;
 		if (!get_opcode(opcode))
 		{

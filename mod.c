@@ -3,7 +3,7 @@
 /**
  * mod - computes the rest of division of the second and first
  * elemnt of stack.
- * @@stack: doubly linked list stack.
+ * @stack: doubly linked list stack.
  * @line_number: file line number.
  */
 void mod(stack_t **stack, unsigned int line_number)
@@ -20,7 +20,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		fclose(info.file);
-		free_stack(*stack);	
+		free_stack(*stack);
 		free(info.line);
 		exit(EXIT_FAILURE);
 	}
