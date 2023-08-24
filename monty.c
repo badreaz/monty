@@ -15,6 +15,7 @@ int main(int ac, char *av[])
 	ssize_t ret;
 	stack_t *stack = NULL;
 	size_t size;
+	char *opcode, *element;
 
 	lnum++;
 	if (ac != 2)
@@ -31,7 +32,20 @@ int main(int ac, char *av[])
 	ret = getline(&info.line, &size, info.file);
 	while (ret != 0)
 	{
-		get_opcode()(&stack, lnum);
+		opcode = strtok(info.line, " \n");
+		element= strtok(NULL, " \n");
+		if (element)
+			info.value = atoi(element);
+
+		if (get_opcode(opcode))
+			get_opcode(opcode)(&stack, lnum);
+		else
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, opcode);
+			fclose(info.file);
+			free_stack(*stack);
+			exit(EXIT_FAILURE);
+		}
 		ret = getline(&info.line, &size, info.file);
 	}
 	fclose(info.file);

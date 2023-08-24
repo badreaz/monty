@@ -2,10 +2,11 @@
 
 /**
  * get_opcode - get the function for the opcode.
+ * @opcode: opcode.
  * 
  * Return: poimter to the opcode function.
  */
-void (*get_opcode(void))(stack_t **stack, unsigned int line_number)
+void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t ops[] = {
 		{"push", push},
@@ -16,21 +17,11 @@ void (*get_opcode(void))(stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{"nop", nop},
 		{NULL, NULL}};
-	int i;
-	char *opcode, *element;
 
-	opcode = strtok(info.line, " \n");
-	element= strtok(NULL, " \n");
-	if (element)
-		info.value = atoi(element);
 	for (i = 0; ops[i].opcode; i++)
 	{
 		if (strcmp(opcode, ops[i].opcode) == 0)
 			return (ops[i].f);
 	}
-
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-	fclose(file);
-	free_stack(*stack);
-	exit(EXIT_FAILURE);
+	return (NULL);
 }
