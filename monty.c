@@ -29,12 +29,12 @@ int main(int ac, char *av[])
 	while (ret != EOF)
 	{
 		ret = getline(&line, &size, file);
-		if (ret == EOF || line[0] == '#')
+		if (ret == EOF)
 			continue;
 		info.line = line;
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
-		if (!opcode)
+		if (!opcode || opcode[0] == '#')
 			continue;
 		if (!get_opcode(opcode))
 		{
