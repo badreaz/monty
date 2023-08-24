@@ -1,2 +1,3 @@
-push -1
-pint
+push 74
+pchar 77
+

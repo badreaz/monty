@@ -14,7 +14,7 @@ int main(int ac, char *av[])
 {
 	FILE *file;
 	unsigned int lnum = 1;
-	ssize_t ret;
+	ssize_t ret = 1;
 	stack_t *stack = NULL;
 	size_t size = 2000;
 	char *opcode, *line;
@@ -31,16 +31,16 @@ int main(int ac, char *av[])
 		exit(EXIT_FAILURE);
 	}
 	line = malloc(sizeof(char) * size);
-	ret = getline(&line, &size, file);
 	info.file = file;
 	while (ret != EOF)
 	{
 		info.line = line;
-		if (line[0] == '#')
-			continue;
+		ret = getline(&line, &size, file);
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
-		if (get_opcode(opcode))
+		if (!opcode || opcode[0] == '#') 
+			continue;
+		else if (get_opcode(opcode))
 			get_opcode(opcode)(&stack, lnum);
 		else
 		{
@@ -51,7 +51,6 @@ int main(int ac, char *av[])
 			exit(EXIT_FAILURE);
 		}
 		lnum++;
-		ret = getline(&line, &size, file);
 	}
 	fclose(info.file);
 	free_stack(stack);
