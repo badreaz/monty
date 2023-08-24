@@ -43,7 +43,7 @@ int main(int ac, char *av[])
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, opcode);
 			fclose(info.file);
-			free_stack(*stack);
+			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
 		ret = getline(&info.line, &size, info.file);

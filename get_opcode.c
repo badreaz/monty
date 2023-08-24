@@ -17,6 +17,7 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{"nop", nop},
 		{NULL, NULL}};
+	int i;
 
 	for (i = 0; ops[i].opcode; i++)
 	{
