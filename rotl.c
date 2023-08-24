@@ -7,6 +7,8 @@
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
+	(void) line_number;
+
 	if (*stack)
 	{
 		add_dnodeint_end(stack, (*stack)->n);
