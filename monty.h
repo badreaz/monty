@@ -49,7 +49,7 @@ typedef struct info_s
 {
 	FILE *file;
 	char *line;
-	int value;
+	char *value;
 } info_t;
 extern info_t info;
 

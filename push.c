@@ -7,13 +7,25 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	if (stack && *stack)
+	int notint = 0, i;
+	char c;
+
+	for (i = 0; c = info.value[i]; i++)
 	{
-		if (!info.value)
+		if (c == '-')
+			continue;
+		if (c < 48 || c > 57)
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
+			notint = 1;
+			break;
 		}
-		add_dnodeint(stack, info.value);
 	}
+	if (!info.value || notint)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose(info.file);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	add_dnodeint(stack, atoi(info.value));
 }

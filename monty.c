@@ -1,6 +1,6 @@
 #include "monty.h"
 
-info_t info;
+info_t info = {NULL, NULL, NULL};
 
 /**
  * main - Monty ByteCodes files interpreter.
@@ -15,7 +15,7 @@ int main(int ac, char *av[])
 	ssize_t ret;
 	stack_t *stack = NULL;
 	size_t size = 1240;
-	char *opcode, *element;
+	char *opcode;
 
 	lnum++;
 	if (ac != 2)
@@ -30,17 +30,12 @@ int main(int ac, char *av[])
 		exit(EXIT_FAILURE);
 	}
 	ret = getline(&info.line, &size, info.file);
-	printf("%s\n", info.line);
 	while (ret != 0)
 	{
 		if (ret == EOF)
 			exit(EXIT_SUCCESS);
 		opcode = strtok(info.line, " \n");
-		element= strtok(NULL, " \n");
-		if (element)
-			info.value = atoi(element);
-		printf("%s\n", opcode);
-
+		info.value = strtok(NULL, " \n");
 		if (get_opcode(opcode))
 			get_opcode(opcode)(&stack, lnum);
 		else
@@ -54,5 +49,6 @@ int main(int ac, char *av[])
 		ret = getline(&info.line, &size, info.file);
 	}
 	fclose(info.file);
+	free_stack(stack);
 	return (0);
 }
