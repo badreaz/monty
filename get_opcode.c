@@ -28,5 +28,9 @@ void (*get_opcode(void))(stack_t **stack, unsigned int line_number)
 		if (strcmp(opcode, ops[i].opcode) == 0)
 			return (ops[i].f);
 	}
-	return (NULL);
+
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+	fclose(file);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
 }

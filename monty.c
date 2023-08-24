@@ -31,8 +31,7 @@ int main(int ac, char *av[])
 	ret = getline(&info.line, &size, info.file);
 	while (ret != 0)
 	{
-		if (get_opcode())
-			get_opcode()(&stack, lnum);
+		get_opcode()(&stack, lnum);
 		ret = getline(&info.line, &size, info.file);
 	}
 	fclose(info.file);
