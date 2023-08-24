@@ -28,5 +28,8 @@ void push(stack_t **stack, unsigned int line_number)
 		free(info.line);
 		exit(EXIT_FAILURE);
 	}
-	add_dnodeint(stack, atoi(info.value));
+	if (info.queue == 0)
+		add_dnodeint(stack, atoi(info.value));
+	else
+		add_dnodeint_end(stack, atoi(info.value));
 }
