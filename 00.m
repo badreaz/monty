@@ -1,4 +1,10 @@
-push 67
-push 116
-push 74
-pchar
+push 1
+push 2
+push 3
+pall
+pop
+pall
+pop
+pall
+pop
+pall

@@ -80,11 +80,13 @@ int delete_dnodeint_at_index(stack_t **head, unsigned int index)
 			}
 			else if (ptr->prev)
 				ptr->prev->next = NULL;
-			else
+			else if (ptr->next)
 			{
 				*head = ptr->next;
 				ptr->next->prev = NULL;
 			}
+			else
+				*head = NULL;
 			free(ptr);
 			return (1);
 		}
