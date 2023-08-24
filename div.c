@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * div - divides the second elment by the first element of stack.
+ * _div - divides the second elment by the first element of stack.
  * @stack: doubly linked list stack.
  * @line_nummber: file line number.
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
