@@ -7,6 +7,7 @@
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
+	(void) line_number;
 	stack_t *h = *stack;
 
 	while (h && h->n > 0 && h->n < 127)
