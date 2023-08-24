@@ -1,7 +1,7 @@
 #include "monty.h"
 #define _GNU_SOURCE
 
-info_t info = {NULL, NULL, NULL};
+info_t info = {NULL, NULL, NULL, 0};
 
 /**
  * main - Monty ByteCodes files interpreter.
