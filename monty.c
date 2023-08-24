@@ -15,7 +15,7 @@ int main(int ac, char *av[])
 	unsigned int lnum = 0;
 	ssize_t ret;
 	stack_t *stack = NULL;
-	size_t size = 1240;
+	size_t size = 2000;
 	char *opcode;
 
 	lnum++;
@@ -35,8 +35,8 @@ int main(int ac, char *av[])
 	{
 		if (ret == EOF)
 			exit(EXIT_SUCCESS);
-		opcode = strtok(info.line, " \n");
-		info.value = strtok(NULL, " \n");
+		opcode = strtok(info.line, " \n\t");
+		info.value = strtok(NULL, " \n\t");
 		if (get_opcode(opcode))
 			get_opcode(opcode)(&stack, lnum);
 		else

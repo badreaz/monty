@@ -12,6 +12,8 @@ void pint(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fclose(info.file);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }

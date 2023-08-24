@@ -3,7 +3,7 @@
 /**
  * get_opcode - get the function for the opcode.
  * @opcode: opcode.
- * 
+ *
  * Return: poimter to the opcode function.
  */
 void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
