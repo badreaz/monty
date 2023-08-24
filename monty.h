@@ -74,5 +74,6 @@ size_t print_stack(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
 void free_stack(stack_t *head);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
 
 #endif /*MAIN_H*/
