@@ -92,3 +92,33 @@ int delete_dnodeint_at_index(stack_t **head, unsigned int index)
 	}
 	return (-1);
 }
+
+/**
+ * add_dnodeint_end - adds a new node at the end of a
+ *  stack_t list.
+ * @head: pointer to the head of list.
+ * @n: node value.
+ *
+ * Return: the address of the new element, or NULL if it failed.
+ */
+stack_t *add_dnodeint_end(stack_t **head, const int n)
+{
+	stack_t *ptr = *head, *new;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = NULL;
+	if (*head == NULL)
+	{
+		new->prev = NULL;
+		*head = new;
+		return (new);
+	}
+	while (ptr->next)
+		ptr = ptr->next;
+	new->prev = ptr;
+	ptr->next = new;
+	return (new);
+}
