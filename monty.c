@@ -36,6 +36,8 @@ int main(int ac, char *av[])
 	while (ret != EOF)
 	{
 		info.line = line;
+		if (line[0] == '-')
+			continue;
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
 		if (get_opcode(opcode))
