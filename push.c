@@ -10,14 +10,17 @@ void push(stack_t **stack, unsigned int line_number)
 	int notint = 0, i;
 	char c;
 
-	for (i = 0; (c = info.value[i]); i++)
+	if (info.value)
 	{
-		if (c == '-')
-			continue;
-		if (c < 48 || c > 57)
+		for (i = 0; (c = info.value[i]); i++)
 		{
-			notint = 1;
-			break;
+			if (c == '-')
+				continue;
+			if (c < 48 || c > 57)
+			{
+				notint = 1;
+				break;
+			}
 		}
 	}
 	if (!info.value || notint)
