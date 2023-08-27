@@ -10,6 +10,7 @@ void push(stack_t **stack, unsigned int line_number)
 	int notint = 0, i;
 	char c;
 
+
 	if (info.value)
 	{
 		for (i = 0; (c = info.value[i]); i++)
