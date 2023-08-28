@@ -13,7 +13,7 @@ info_t info = {NULL, NULL, NULL, 0};
 int main(int ac, char *av[])
 {
 	FILE *file;
-	unsigned int lnum = 1;
+	unsigned int lnum = 0;
 	ssize_t ret = 1;
 	stack_t *stack = NULL;
 	size_t size = 2000;
@@ -34,9 +34,9 @@ int main(int ac, char *av[])
 		info.line = line;
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
+		lnum++;
 		if (!opcode || opcode[0] == '#')
 			continue;
-		lnum++;
 		if (!get_opcode(opcode))
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, opcode);
