@@ -31,6 +31,7 @@ int main(int ac, char *av[])
 		ret = getline(&line, &size, file);
 		if (ret == EOF)
 			continue;
+		lnum++;
 		info.line = line;
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
@@ -45,7 +46,6 @@ int main(int ac, char *av[])
 			exit(EXIT_FAILURE);
 		}
 		get_opcode(opcode)(&stack, lnum);
-		lnum++;
 	}
 	fclose(info.file);
 	free_stack(stack);
