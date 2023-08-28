@@ -31,12 +31,12 @@ int main(int ac, char *av[])
 		ret = getline(&line, &size, file);
 		if (ret == EOF)
 			continue;
-		lnum++;
 		info.line = line;
 		opcode = strtok(line, " \n\t");
 		info.value = strtok(NULL, " \n\t");
 		if (!opcode || opcode[0] == '#')
 			continue;
+		lnum++;
 		if (!get_opcode(opcode))
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, opcode);
